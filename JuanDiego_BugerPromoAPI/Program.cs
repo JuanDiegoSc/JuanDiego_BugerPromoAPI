@@ -1,4 +1,10 @@
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using JuanDiego_BugerPromoAPI.Data;
+using JuanDiego_BugerPromoAPI.Controllers;
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddDbContext<JuanDiego_BugerPromoAPIContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("JuanDiego_BugerPromoAPIContext") ?? throw new InvalidOperationException("Connection string 'JuanDiego_BugerPromoAPIContext' not found.")));
 
 // Add services to the container.
 
@@ -21,5 +27,9 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.MapBurgerEndpoints();
+
+app.MapPromoEndpoints();
 
 app.Run();
