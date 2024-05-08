@@ -1,0 +1,6 @@
+@JuanDiego_BugerPromoAPI_HostAddress = http://localhost:5042
+
+GET {{JuanDiego_BugerPromoAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
